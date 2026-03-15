@@ -12,7 +12,7 @@ const testimonials = [
     role: "Master's Student, TU Berlin",
     image: "https://images.unsplash.com/photo-1664845780736-88dc71de5be5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1hbiUyMHN0dWRlbnQlMjBzbWlsaW5nJTIwY29uZmlkZW50fGVufDF8fHx8MTc3MzA4MDUyOXww&ixlib=rb-4.1.0&q=80&w=400",
     quote:
-      "Growth Bridge made my Germany application process smooth and stress-free. Their guidance on every step, from university selection to visa application, was invaluable.",
+      "AbroadAoo made my Germany application process smooth and stress-free. Their guidance on every step, from university selection to visa application, was invaluable.",
     rating: 5,
     flag: "🇩🇪",
   },
@@ -21,7 +21,7 @@ const testimonials = [
     role: "Ausbildung – Munich",
     image: "https://images.unsplash.com/photo-1765572144519-1dc1e6e07bc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHdvbWFuJTIwc3R1ZGVudCUyMHNtaWxpbmclMjBwb3J0cmFpdHxlbnwxfHx8fDE3NzMwNDMwMDZ8MA&ixlib=rb-4.1.0&q=80&w=400",
     quote:
-      "They guided me step by step and helped me secure my Ausbildung opportunity in Germany. I couldn't have done it without Growth Bridge's expert support.",
+      "They guided me step by step and helped me secure my Ausbildung opportunity in Germany. I couldn't have done it without AbroadAoo's expert support.",
     rating: 5,
     flag: "🇩🇪",
   },

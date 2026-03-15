@@ -15,7 +15,7 @@ const faqs = [
   {
     question: "What is a blocked account?",
     answer:
-      "A blocked account (Sperrkonto) is a special bank account required for your German student visa. It shows you have enough funds to support yourself in Germany. Currently, you need to deposit €11,208 (€934/month for 12 months). Growth Bridge guides you through opening one with our trusted partners.",
+      "A blocked account (Sperrkonto) is a special bank account required for your German student visa. It shows you have enough funds to support yourself in Germany. Currently, you need to deposit €11,208 (€934/month for 12 months). AbroadAoo guides you through opening one with our trusted partners.",
   },
   {
     question: "Can I apply for Ausbildung from Pakistan?",
@@ -30,7 +30,32 @@ const faqs = [
   {
     question: "What is APS and do I need it?",
     answer:
-      "APS (Academic Evaluation Centre) certificate is a mandatory requirement for Pakistani students applying to German universities. It verifies your academic documents. The process takes around 4-6 weeks and costs approximately €120. Growth Bridge will guide you through every step of the APS process.",
+      "APS (Academic Evaluation Centre) certificate is a mandatory requirement for Pakistani students applying to German universities. It verifies your academic documents. The process takes around 4-6 weeks and costs approximately €120. AbroadAoo will guide you through every step of the APS process.",
+  },
+  {
+    question: "How does AbroadAoo help improve my chances of studying in Germany?",
+    answer:
+      "AbroadAoo provides structured guidance throughout the entire process, from evaluating your academic profile to helping you choose the most suitable study pathway. We assist students in preparing strong applications, understanding university requirements, and organizing the necessary documents for visa submission. Our goal is to ensure students follow the correct process and avoid common mistakes that often lead to application delays or visa complications.",
+  },
+  {
+    question: "What makes AbroadAoo different from other study abroad consultants?",
+    answer:
+      "AbroadAoo focuses specifically on Germany-focused pathways, including Master’s programs, Ausbildung vocational training, and direct bachelor routes. Instead of providing generic advice, we analyze each student's academic background and recommend the most suitable option. We also provide transparent guidance, structured planning, and personalized consultation sessions to help students make informed decisions about their future.",
+  },
+  {
+    question: "Do you help students choose the best universities or training programs?",
+    answer:
+      "Yes. AbroadAoo helps students identify universities, training programs, or study pathways that match their academic background, language proficiency, and career goals. We guide students in researching suitable options and understanding admission requirements so they can apply to institutions that align with their qualifications and long-term plans.",
+  },
+  {
+    question: "Can AbroadAoo guide me if I am confused about which pathway to choose?",
+    answer:
+      "Absolutely. Many students are unsure whether they should pursue a Master’s program, Ausbildung vocational training, or a bachelor pathway. During consultation sessions, we evaluate your academic profile, financial situation, and language level to recommend the most realistic and beneficial pathway for your situation.",
+  },
+  {
+    question: "How does AbroadAoo support students before and after the application process?",
+    answer:
+      "AbroadAoo supports students throughout the entire journey. Before applying, we help evaluate eligibility and prepare the required documents. During the process, we guide students through application steps and visa preparation. Our aim is to ensure students clearly understand every stage of the study abroad process so they can proceed with confidence.",
   },
 ];
 

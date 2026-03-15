@@ -11,10 +11,41 @@ import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";
 import { ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { BookPage } from "./pages/BookPage";
+import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
+import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const isBookPage = typeof window !== "undefined" && window.location.pathname === "/book";
+  const isPrivacyPolicyPage = typeof window !== "undefined" && window.location.pathname === "/privacy-policy";
+  const isTermsOfServicePage = typeof window !== "undefined" && window.location.pathname === "/terms-of-service";
+
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = (event: MediaQueryListEvent | MediaQueryList) => {
+      setDarkMode(event.matches);
+    };
+
+    handleChange(mediaQuery);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -32,15 +63,43 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleDarkMode = () => setDarkMode((d) => !d);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  if (isBookPage) {
+    return (
+      <div style={{ fontFamily: "Sora, sans-serif", transition: "background 0.3s, color 0.3s" }}>
+        <Navbar darkMode={darkMode} />
+        <BookPage darkMode={darkMode} />
+        <Footer darkMode={darkMode} />
+      </div>
+    );
+  }
+
+  if (isPrivacyPolicyPage) {
+    return (
+      <div style={{ fontFamily: "Sora, sans-serif", transition: "background 0.3s, color 0.3s" }}>
+        <Navbar darkMode={darkMode} />
+        <PrivacyPolicyPage darkMode={darkMode} />
+        <Footer darkMode={darkMode} />
+      </div>
+    );
+  }
+
+  if (isTermsOfServicePage) {
+    return (
+      <div style={{ fontFamily: "Sora, sans-serif", transition: "background 0.3s, color 0.3s" }}>
+        <Navbar darkMode={darkMode} />
+        <TermsOfServicePage darkMode={darkMode} />
+        <Footer darkMode={darkMode} />
+      </div>
+    );
+  }
+
   return (
     <div style={{ fontFamily: "Sora, sans-serif", transition: "background 0.3s, color 0.3s" }}>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar darkMode={darkMode} />
       <HeroSection darkMode={darkMode} />
       <ServicesSection darkMode={darkMode} />
       <IELTSSection darkMode={darkMode} />

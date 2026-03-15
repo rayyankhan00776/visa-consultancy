@@ -88,7 +88,7 @@ export function ProcessSection({ darkMode }: ProcessSectionProps) {
               lineHeight: 1.2,
             }}
           >
-            Your Journey with Growth Bridge
+            Your Journey with AbroadAoo
           </h2>
           <p
             className="mt-4 max-w-xl mx-auto"

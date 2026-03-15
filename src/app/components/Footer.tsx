@@ -1,4 +1,4 @@
-import { Globe, Instagram, Facebook, Linkedin, Mail, Phone, MessageCircle } from "lucide-react";
+import { Globe, Instagram, Facebook, Linkedin, Mail, Phone, MessageCircle, Music2 } from "lucide-react";
 
 interface FooterProps {
   darkMode: boolean;
@@ -12,13 +12,33 @@ const footerLinks = {
   ],
   Support: [
     { label: "IELTS Classes", href: "#ielts" },
-    { label: "Consultation", href: "#consultation" },
+    { label: "Consultation", href: "/book" },
     { label: "Visa Guidance", href: "#process" },
   ],
 };
 
 export function Footer({ darkMode }: FooterProps) {
+  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || "contact@abroadaoo.com";
+  const phoneDisplay = import.meta.env.VITE_CONTACT_PHONE_DISPLAY || "+92 3141840011";
+  const phoneTel = import.meta.env.VITE_CONTACT_PHONE_TEL || "+923141840011";
+  const whatsappUrl = import.meta.env.VITE_CONTACT_WHATSAPP_URL || "https://wa.link/5pb1om";
+
+  const instagramUrl = import.meta.env.VITE_SOCIAL_INSTAGRAM || "#";
+  const facebookUrl = import.meta.env.VITE_SOCIAL_FACEBOOK || "#";
+  const linkedinUrl = import.meta.env.VITE_SOCIAL_LINKEDIN || "#";
+  const tiktokUrl = import.meta.env.VITE_SOCIAL_TIKTOK || "#";
+
   const scrollTo = (href: string) => {
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
+
+    if (href.startsWith("#") && window.location.pathname !== "/") {
+      window.location.href = `/${href}`;
+      return;
+    }
+
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -42,7 +62,7 @@ export function Footer({ darkMode }: FooterProps) {
                 className="font-bold"
                 style={{ fontFamily: "Sora, sans-serif", fontSize: "1.1rem", color: "#fff" }}
               >
-                Growth<span style={{ color: "#C4A882" }}>Bridge</span>
+                Abroad<span style={{ color: "#C4A882" }}>Aoo</span>
               </span>
             </div>
             <p
@@ -59,13 +79,16 @@ export function Footer({ darkMode }: FooterProps) {
             {/* Social links */}
             <div className="flex gap-3">
               {[
-                { icon: Instagram, label: "Instagram", href: "#", color: "#E1306C" },
-                { icon: Facebook, label: "Facebook", href: "#", color: "#1877F2" },
-                { icon: Linkedin, label: "LinkedIn", href: "#", color: "#0A66C2" },
+                { icon: Instagram, label: "Instagram", href: instagramUrl, color: "#E1306C" },
+                { icon: Facebook, label: "Facebook", href: facebookUrl, color: "#1877F2" },
+                { icon: Linkedin, label: "LinkedIn", href: linkedinUrl, color: "#0A66C2" },
+                { icon: Music2, label: "TikTok", href: tiktokUrl, color: "#ffffff" },
               ].map(({ icon: Icon, label, href, color }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
                   style={{ background: "rgba(255,255,255,0.08)" }}
@@ -132,7 +155,7 @@ export function Footer({ darkMode }: FooterProps) {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:info@growthbridge.pk"
+                  href={`mailto:${contactEmail}`}
                   className="flex items-center gap-2.5 transition-colors duration-200 hover:text-[#C4A882] group"
                 >
                   <Mail className="w-4 h-4 text-[#C4A882] flex-shrink-0" />
@@ -143,13 +166,13 @@ export function Footer({ darkMode }: FooterProps) {
                       color: "#666",
                     }}
                   >
-                    info@growthbridge.pk
+                    {contactEmail}
                   </span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+923001234567"
+                  href={`tel:${phoneTel}`}
                   className="flex items-center gap-2.5 transition-colors duration-200 hover:text-[#C4A882]"
                 >
                   <Phone className="w-4 h-4 text-[#C4A882] flex-shrink-0" />
@@ -160,13 +183,13 @@ export function Footer({ darkMode }: FooterProps) {
                       color: "#666",
                     }}
                   >
-                    +92 300 1234567
+                    {phoneDisplay}
                   </span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/923001234567"
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 transition-colors duration-200 hover:text-[#C4A882]"
@@ -215,13 +238,16 @@ export function Footer({ darkMode }: FooterProps) {
               color: "#444",
             }}
           >
-            © 2026 GrowthBridge. All rights reserved.
+            © 2026 AbroadAoo. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service"].map((item) => (
+            {[
+              { label: "Privacy Policy", href: "/privacy-policy" },
+              { label: "Terms of Service", href: "/terms-of-service" },
+            ].map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className="transition-colors duration-200 hover:text-[#C4A882]"
                 style={{
                   fontFamily: "Sora, sans-serif",
@@ -229,7 +255,7 @@ export function Footer({ darkMode }: FooterProps) {
                   color: "#444",
                 }}
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>

@@ -7,14 +7,15 @@ interface ConsultationSectionProps {
 
 const plans = [
   {
+    type: "voice" as const,
     icon: Phone,
     emoji: "📞",
-    title: "1-on-1 Consultation Call",
+    title: "Voice Consultation",
     description: "Private session to discuss study options, eligibility, and visa pathway.",
     duration: "30 minutes",
-    price: "$25",
+    price: "$10",
     badge: null,
-    cta: "Book Now",
+    cta: "Book Voice Consultation",
     features: [
       "Study option discussion",
       "Eligibility assessment",
@@ -25,14 +26,15 @@ const plans = [
     accentColor: "#C4A882",
   },
   {
+    type: "video" as const,
     icon: Video,
     emoji: "🎥",
-    title: "Face-to-Face Video Consultation",
+    title: "Video Consultation",
     description: "Personalized video session to plan your Germany study pathway.",
     duration: "45 minutes",
-    price: "$40",
+    price: "$25",
     badge: "Most Popular",
-    cta: "Schedule Video Call",
+    cta: "Book Video Consultation",
     features: [
       "Personalized study plan",
       "University selection help",
@@ -216,6 +218,9 @@ export function ConsultationSection({ darkMode }: ConsultationSectionProps) {
 
                 {/* CTA */}
                 <button
+                  onClick={() => {
+                    window.location.href = `/book?type=${plan.type}`;
+                  }}
                   className="group/btn flex items-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-semibold transition-all duration-300 w-full justify-center hover:shadow-lg"
                   style={{
                     fontFamily: "Sora, sans-serif",

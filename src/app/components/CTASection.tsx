@@ -6,6 +6,8 @@ interface CTASectionProps {
 }
 
 export function CTASection({ darkMode }: CTASectionProps) {
+  const whatsappUrl = import.meta.env.VITE_CONTACT_WHATSAPP_URL || "https://wa.link/5pb1om";
+
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -96,12 +98,14 @@ export function CTASection({ darkMode }: CTASectionProps) {
               lineHeight: 1.7,
             }}
           >
-            Join 500+ students who trusted Growth Bridge to navigate their path to Germany. Expert guidance, proven results.
+            Join 500+ students who trusted AbroadAoo to navigate their path to Germany. Expert guidance, proven results.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
             <button
-              onClick={() => scrollTo("#consultation")}
+              onClick={() => {
+                window.location.href = "/book";
+              }}
               className="group flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-[#C4A882]/30 hover:-translate-y-1"
               style={{
                 fontFamily: "Sora, sans-serif",
@@ -113,7 +117,7 @@ export function CTASection({ darkMode }: CTASectionProps) {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
             <a
-              href="https://wa.me/923001234567"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-1"
@@ -132,7 +136,7 @@ export function CTASection({ darkMode }: CTASectionProps) {
 
           {/* Trust indicators */}
           <div className="flex flex-wrap items-center justify-center gap-6 mt-10 relative z-10">
-            {["✅ 500+ Students Guided", "🎓 50+ Universities", "📞 Free First Consultation"].map((item) => (
+            {["✅ 500+ Students Guided", "🎓 50+ Universities", "📞 Consultation Calls Available"].map((item) => (
               <span
                 key={item}
                 style={{

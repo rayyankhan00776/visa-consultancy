@@ -96,7 +96,7 @@ export function HeroSection({ darkMode }: HeroProps) {
                 Future Abroad
               </span>
               <br />
-              with Growth Bridge
+              with AbroadAoo
             </motion.h1>
 
             {/* Subtext */}
@@ -135,7 +135,9 @@ export function HeroSection({ darkMode }: HeroProps) {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
               <button
-                onClick={() => scrollTo("#consultation")}
+                onClick={() => {
+                  window.location.href = "/book";
+                }}
                 className="flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 style={{
                   fontFamily: "Sora, sans-serif",
@@ -211,7 +213,7 @@ export function HeroSection({ darkMode }: HeroProps) {
                     className="text-xs"
                     style={{ fontFamily: "Sora, sans-serif", color: darkMode ? "#888" : "#888" }}
                   >
-                    2024 Intake Open
+                    Current Intake Open
                   </p>
                 </div>
               </div>
