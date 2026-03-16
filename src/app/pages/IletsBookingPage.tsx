@@ -304,7 +304,7 @@ export function IletsBookingPage({ darkMode }: IletsBookingPageProps) {
                   textTransform: "uppercase",
                 }}
               >
-                Instructor Videos
+                Having Doubt Watch this!
               </div>
 
               <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -453,6 +453,56 @@ export function IletsBookingPage({ darkMode }: IletsBookingPageProps) {
                 border: darkMode ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(196,168,130,0.2)",
               }}
             >
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div
+                    style={{
+                      fontFamily: "Sora, sans-serif",
+                      fontSize: "0.85rem",
+                      fontWeight: 800,
+                      color: darkMode ? "#E8DCCF" : "#8B6B4A",
+                      marginBottom: 8,
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    1-on-1 Conversation
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: "Sora, sans-serif",
+                      fontSize: "0.9rem",
+                      color: darkMode ? "#aaa" : "#777",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    Want personalized guidance before joining? Book a consultation and we’ll help you pick the right program and next steps.
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => {
+                    window.location.href = "/book";
+                  }}
+                  className="flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 hover:shadow-md"
+                  style={{
+                    fontFamily: "Sora, sans-serif",
+                    background: "linear-gradient(135deg, #D4B896, #C4A882)",
+                    color: "#fff",
+                  }}
+                >
+                  Book
+                </button>
+              </div>
+            </div>
+
+            <div
+              className="rounded-2xl p-5"
+              style={{
+                background: darkMode ? "rgba(255,255,255,0.04)" : "rgba(212,184,150,0.18)",
+                border: darkMode ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(196,168,130,0.2)",
+              }}
+            >
               <div
                 style={{
                   fontFamily: "Sora, sans-serif",
@@ -486,8 +536,8 @@ export function IletsBookingPage({ darkMode }: IletsBookingPageProps) {
                   {[
                     { label: "IELTS (Academic & General)", price: "PKR 29,999" },
                     { label: "PTE", price: "PKR 26,999" },
-                    { label: "TOEFL", price: "PKR 26,999" },
-                    { label: "IGCSE English", price: "PKR 23,999" },
+                    { label: "TOEFL", price: "PKR 29,999" },
+                    { label: "IGCSE English", price: "PKR 26,999" },
                   ].map((course) => (
                     <li key={course.label} className="flex items-start justify-between gap-4">
                       <span>{course.label}</span>
