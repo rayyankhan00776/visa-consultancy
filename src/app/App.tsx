@@ -15,9 +15,11 @@ import { BookPage } from "./pages/BookPage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 import { TermsOfServicePage } from "./pages/TermsOfServicePage";
 import { AboutUsPage } from "./pages/AboutUsPage";
+import { IletsBookingPage } from "./pages/IletsBookingPage";
 
 export default function App() {
   const isBookPage = typeof window !== "undefined" && window.location.pathname === "/book";
+  const isIletsBookingPage = typeof window !== "undefined" && window.location.pathname === "/ilets-booking";
   const isPrivacyPolicyPage = typeof window !== "undefined" && window.location.pathname === "/privacy-policy";
   const isTermsOfServicePage = typeof window !== "undefined" && window.location.pathname === "/terms-of-service";
   const isAboutUsPage = typeof window !== "undefined" && window.location.pathname === "/about-us";
@@ -65,6 +67,50 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+
+    const scrollToHash = (attempt = 0) => {
+      if (cancelled) return;
+      if (window.location.pathname !== "/") return;
+
+      const hash = window.location.hash;
+      if (!hash || !hash.startsWith("#")) return;
+
+      if (hash === "#top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const el = document.querySelector(hash);
+      if (!el) {
+        if (attempt < 20) {
+          window.setTimeout(() => scrollToHash(attempt + 1), 50);
+        }
+        return;
+      }
+
+      const nav = document.querySelector("nav");
+      const navHeight = nav ? Math.ceil(nav.getBoundingClientRect().height) : 80;
+      // Sections already have generous top padding (py-24 ~ 96px).
+      const offset = Math.max(0, navHeight - 96);
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    };
+
+    // Run after initial render and whenever hash changes.
+    scrollToHash(0);
+    const onHashChange = () => scrollToHash(0);
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -74,6 +120,16 @@ export default function App() {
       <div style={{ fontFamily: "Sora, sans-serif", transition: "background 0.3s, color 0.3s" }}>
         <Navbar darkMode={darkMode} />
         <BookPage darkMode={darkMode} />
+        <Footer darkMode={darkMode} />
+      </div>
+    );
+  }
+
+  if (isIletsBookingPage) {
+    return (
+      <div style={{ fontFamily: "Sora, sans-serif", transition: "background 0.3s, color 0.3s" }}>
+        <Navbar darkMode={darkMode} />
+        <IletsBookingPage darkMode={darkMode} />
         <Footer darkMode={darkMode} />
       </div>
     );
@@ -112,6 +168,7 @@ export default function App() {
   return (
     <div style={{ fontFamily: "Sora, sans-serif", transition: "background 0.3s, color 0.3s" }}>
       <Navbar darkMode={darkMode} />
+      <div id="top" />
       <HeroSection darkMode={darkMode} />
       <ServicesSection darkMode={darkMode} />
       <IELTSSection darkMode={darkMode} />

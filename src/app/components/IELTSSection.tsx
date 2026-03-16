@@ -47,7 +47,7 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
                 border: "1px solid rgba(196,168,130,0.3)",
               }}
             >
-              IELTS Preparation
+              IELTS • PTE • TOEFL • IGCSE
             </span>
 
             <h2
@@ -60,7 +60,9 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
                 lineHeight: 1.2,
               }}
             >
-              IELTS Preparation
+              IELTS • PTE • TOEFL • IGCSE
+              <br />
+              Preparation
               <br />
               <span
                 style={{
@@ -163,6 +165,10 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
             </div>
 
             <button
+              type="button"
+              onClick={() => {
+                window.location.href = "/ilets-booking";
+              }}
               className="group flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#C4A882]/30 hover:-translate-y-0.5"
               style={{
                 fontFamily: "Sora, sans-serif",
@@ -301,6 +307,21 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
               </div>
             </div>
           </motion.div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-14 text-center">
+          <p
+            className="mb-4"
+            style={{
+              fontFamily: "Sora, sans-serif",
+              fontSize: "0.92rem",
+              color: darkMode ? "#aaa" : "#777",
+              lineHeight: 1.7,
+            }}
+          >
+            To explore more, click on the Join Now button Above.
+          </p>
         </div>
       </div>
     </section>

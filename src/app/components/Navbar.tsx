@@ -18,7 +18,8 @@ export function Navbar({ darkMode }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { label: "Home", href: "#services" },
+    { label: "Home", href: "#top" },
+    { label: "Programs", href: "#services" },
     { label: "IELTS", href: "#ielts" },
     { label: "Consultation", href: "#consultation" },
     { label: "Process", href: "#process" },
@@ -34,21 +35,48 @@ export function Navbar({ darkMode }: NavbarProps) {
       return;
     }
 
-    if (href.startsWith("#") && window.location.pathname !== "/") {
-      window.location.href = `/${href}`;
-      return;
-    }
+    if (href.startsWith("#")) {
+      const isHome = window.location.pathname === "/" || window.location.pathname === "/index.html";
 
-    const el = document.querySelector(href);
-    if (el) {
-      const offset = 80; // Navbar height
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      if (!isHome) {
+        window.location.href = `/${href}`;
+        return;
+      }
+
+      // Update the URL hash without the browser's instant jump.
+      if (window.location.hash !== href) {
+        window.history.pushState(null, "", href);
+      } else {
+        // Re-trigger when tapping the same anchor again.
+        window.history.pushState(null, "", "#");
+        window.history.pushState(null, "", href);
+      }
+
+      if (href === "#top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const tryScroll = (attempt = 0) => {
+        const el = document.querySelector(href);
+        if (!el) {
+          if (attempt < 10) window.setTimeout(() => tryScroll(attempt + 1), 50);
+          return;
+        }
+
+        const nav = document.querySelector("nav");
+        const navHeight = nav ? Math.ceil(nav.getBoundingClientRect().height) : 80;
+        // Sections use py-24; reduce offset so content doesn't land too low.
+        const offset = Math.max(0, navHeight - 96);
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      };
+
+      // Delay lets the mobile menu close animation finish.
+      window.setTimeout(() => tryScroll(0), 150);
+      return;
     }
   };
 

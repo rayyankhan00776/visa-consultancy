@@ -11,7 +11,7 @@ const footerLinks = {
     { label: "Bachelor Route", href: "#services" },
   ],
   Support: [
-    { label: "IELTS Classes", href: "#ielts" },
+    { label: "IELTS Classes", href: "/ilets-booking" },
     { label: "Consultation", href: "/book" },
     { label: "Visa Guidance", href: "#process" },
   ],
@@ -40,7 +40,18 @@ export function Footer({ darkMode }: FooterProps) {
     }
 
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      const nav = document.querySelector("nav");
+      const navHeight = nav ? Math.ceil(nav.getBoundingClientRect().height) : 80;
+      const offset = Math.max(0, navHeight - 96);
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -51,9 +62,9 @@ export function Footer({ darkMode }: FooterProps) {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg bg-[#E8DCCF] flex items-center justify-center">
                 <Globe className="w-5 h-5 text-[#6B5744]" />
