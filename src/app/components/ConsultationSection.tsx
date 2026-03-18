@@ -13,7 +13,7 @@ const plans = [
     title: "Voice Consultation",
     description: "Private session to discuss study options, eligibility, and visa pathway.",
     duration: "30 minutes",
-    price: "$10",
+    price: "$6",
     badge: null,
     cta: "Book Voice Consultation",
     features: [
@@ -32,7 +32,7 @@ const plans = [
     title: "Video Consultation",
     description: "Personalized video session to plan your Germany study pathway.",
     duration: "45 minutes",
-    price: "$25",
+    price: "$12",
     badge: "Most Popular",
     cta: "Book Video Consultation",
     features: [

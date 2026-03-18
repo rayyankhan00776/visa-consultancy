@@ -19,14 +19,14 @@ const options: Array<{
     id: "voice",
     title: "Voice Consultation",
     duration: "30 Minutes",
-    price: 10,
+    price: 6,
     Icon: Phone,
   },
   {
     id: "video",
     title: "Video Consultation",
     duration: "45 Minutes",
-    price: 25,
+    price: 12,
     Icon: Video,
   },
 ];
