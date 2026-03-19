@@ -182,7 +182,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
               border: "1px solid rgba(196,168,130,0.3)",
             }}
           >
-            Student Stories
+            Pakistani Students Now Studying in Germany
           </span>
           <h2
             style={{
@@ -193,7 +193,7 @@ export function TestimonialsSection({ darkMode }: TestimonialsSectionProps) {
               lineHeight: 1.2,
             }}
           >
-            What Our Students Say
+            Success Stories — Pakistani Students in Germany
           </h2>
         </motion.div>
 

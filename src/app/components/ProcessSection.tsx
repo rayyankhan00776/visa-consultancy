@@ -10,8 +10,8 @@ const steps = [
     number: "01",
     emoji: "💬",
     icon: MessageCircle,
-    title: "Consultation",
-    description: "Discuss your goals, background, and study options with our expert advisors.",
+    title: "Free Consultation",
+    description: "Discuss your goals, qualifications, and the best Germany study pathway — Masters, Ausbildung, or Direct Bachelor's.",
     color: "#D4B896",
   },
   {
@@ -19,7 +19,7 @@ const steps = [
     emoji: "👤",
     icon: UserCheck,
     title: "Profile Evaluation",
-    description: "We assess your academic profile to find the best-fit programs for you.",
+    description: "We assess your academic profile and identify the best-fit German universities or Ausbildung companies for you.",
     color: "#C4A882",
   },
   {
@@ -27,23 +27,23 @@ const steps = [
     emoji: "📄",
     icon: FileText,
     title: "University / Ausbildung Applications",
-    description: "We help you prepare and submit applications to German universities or companies.",
+    description: "We prepare and submit your applications to German universities or vocational training companies with full document support.",
     color: "#B09070",
   },
   {
     number: "04",
     emoji: "🛂",
     icon: Stamp,
-    title: "Visa Guidance",
-    description: "Step-by-step support for blocked account, APS, and German student visa.",
+    title: "Germany Student Visa Guidance",
+    description: "Step-by-step support for your blocked account, APS certificate, IELTS, and Germany student visa from Pakistan.",
     color: "#A07850",
   },
   {
     number: "05",
     emoji: "✈️",
     icon: Plane,
-    title: "Pre-Departure Support",
-    description: "Final preparation: accommodation, health insurance, and arrival tips.",
+    title: "Pre-Departure to Germany",
+    description: "Final preparation before you fly — accommodation search, health insurance, registration, and Germany arrival tips.",
     color: "#8B6B4A",
   },
 ];
@@ -77,7 +77,7 @@ export function ProcessSection({ darkMode }: ProcessSectionProps) {
               border: "1px solid rgba(196,168,130,0.3)",
             }}
           >
-            How It Works
+            How Pakistani Students Study in Germany with AbroadAoo
           </span>
           <h2
             style={{
@@ -88,7 +88,7 @@ export function ProcessSection({ darkMode }: ProcessSectionProps) {
               lineHeight: 1.2,
             }}
           >
-            Your Journey with AbroadAoo
+            Your Pakistan to Germany Study Journey
           </h2>
           <p
             className="mt-4 max-w-xl mx-auto"
@@ -99,7 +99,7 @@ export function ProcessSection({ darkMode }: ProcessSectionProps) {
               lineHeight: 1.7,
             }}
           >
-            A proven 5-step process to take you from Pakistan to Germany.
+            A proven 5-step process to take you from Pakistan to Germany — whether you're pursuing a Master's degree, Ausbildung, or Direct Bachelor's route.
           </p>
         </motion.div>
 

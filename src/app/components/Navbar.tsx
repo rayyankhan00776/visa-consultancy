@@ -92,6 +92,7 @@ export function Navbar({ darkMode }: NavbarProps) {
             : "bg-white/90 backdrop-blur-xl shadow-lg shadow-black/5"
           : "bg-transparent"
       }`}
+      aria-label="AbroadAoo — Germany Study Abroad Consultancy for Pakistani Students"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -114,6 +115,7 @@ export function Navbar({ darkMode }: NavbarProps) {
           </div>
           <span
             className="font-bold tracking-tight"
+            title="AbroadAoo — Pakistan's Germany Study Abroad Consultancy"
             style={{ fontFamily: "Sora, sans-serif", fontSize: "1.1rem", color: darkMode ? "#fff" : "#111" }}
           >
             Abroad<span style={{ color: "#C4A882" }}>Aoo</span>

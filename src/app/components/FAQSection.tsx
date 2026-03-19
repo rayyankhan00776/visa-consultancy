@@ -90,7 +90,7 @@ export function FAQSection({ darkMode }: FAQSectionProps) {
               border: "1px solid rgba(196,168,130,0.3)",
             }}
           >
-            Common Questions
+            Germany Study Abroad — FAQs for Pakistani Students
           </span>
           <h2
             style={{
@@ -101,7 +101,7 @@ export function FAQSection({ darkMode }: FAQSectionProps) {
               lineHeight: 1.2,
             }}
           >
-            Frequently Asked Questions
+            Germany Study Abroad FAQs for Pakistani Students
           </h2>
           <p
             className="mt-4"
@@ -112,7 +112,7 @@ export function FAQSection({ darkMode }: FAQSectionProps) {
               lineHeight: 1.7,
             }}
           >
-            Got questions? We have answers.
+            Answers to the most common questions about studying in Germany from Pakistan — Masters, Ausbildung, student visa, blocked account, and IELTS.
           </p>
         </motion.div>
 

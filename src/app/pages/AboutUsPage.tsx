@@ -82,7 +82,7 @@ export function AboutUsPage({ darkMode }: AboutUsPageProps) {
               border: "1px solid rgba(196,168,130,0.3)",
             }}
           >
-            About
+            About AbroadAoo — Pakistan's Germany Study Consultancy
           </span>
           <h1
             style={{
@@ -93,7 +93,7 @@ export function AboutUsPage({ darkMode }: AboutUsPageProps) {
               lineHeight: 1.15,
             }}
           >
-            About Us
+            About AbroadAoo — Your Pakistan to Germany Study Abroad Partner
           </h1>
           <p
             className="mt-4 max-w-2xl mx-auto"
@@ -104,7 +104,7 @@ export function AboutUsPage({ darkMode }: AboutUsPageProps) {
               lineHeight: 1.7,
             }}
           >
-            Abroadaoo helps you plan, apply, prepare, and move forward—step by step.
+            AbroadAoo is Pakistan's leading Germany study abroad consultancy — helping you plan your Masters, Ausbildung, or Bachelor's study journey from Pakistan to Germany.
           </p>
         </motion.div>
 

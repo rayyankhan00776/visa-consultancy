@@ -85,7 +85,7 @@ export function Footer({ darkMode }: FooterProps) {
                 lineHeight: 1.7,
               }}
             >
-              Helping Pakistani students build their future in Germany through expert guidance and proven pathways.
+              Pakistan's #1 study abroad consultancy helping Pakistani students build their future in Germany — Masters, Ausbildung, IELTS prep, and Germany student visa.
             </p>
             {/* Social links */}
             <div className="flex gap-3">

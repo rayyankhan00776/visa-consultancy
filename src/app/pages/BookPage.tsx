@@ -309,7 +309,7 @@ export function BookPage({ darkMode }: BookPageProps) {
               border: "1px solid rgba(196,168,130,0.3)",
             }}
           >
-            Booking
+            Germany Study Abroad — Book Your Consultation
           </span>
           <h1
             style={{
@@ -320,7 +320,7 @@ export function BookPage({ darkMode }: BookPageProps) {
               lineHeight: 1.15,
             }}
           >
-            Book Your Consultation
+            Book a Germany Study Abroad Consultation
           </h1>
           <p
             className="mt-4 max-w-xl mx-auto"
@@ -331,7 +331,7 @@ export function BookPage({ darkMode }: BookPageProps) {
               lineHeight: 1.7,
             }}
           >
-            Choose your preferred consultation type and complete the booking process.
+            Choose your preferred consultation type and get personalised expert guidance on studying in Germany from Pakistan — Masters, Ausbildung, or Bachelor's route.
           </p>
         </motion.div>
 

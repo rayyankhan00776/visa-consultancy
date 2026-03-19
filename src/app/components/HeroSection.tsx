@@ -6,10 +6,10 @@ interface HeroProps {
 }
 
 const stats = [
-  { icon: Users, value: "500+", label: "Students Guided" },
-  { icon: Building2, value: "50+", label: "Universities" },
-  { icon: Clock, value: "7+", label: "Years Experience" },
-  { icon: CheckCircle, value: "95%", label: "Visa Success Rate" },
+  { icon: Users, value: "500+", label: "Students Guided to Germany" },
+  { icon: Building2, value: "50+", label: "German Universities" },
+  { icon: Clock, value: "7+", label: "Years of Experience" },
+  { icon: CheckCircle, value: "95%", label: "Germany Visa Success Rate" },
 ];
 
 export function HeroSection({ darkMode }: HeroProps) {
@@ -68,7 +68,7 @@ export function HeroSection({ darkMode }: HeroProps) {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#C4A882] animate-pulse" />
-              Pakistan → Germany Study Abroad Consultancy
+              Pakistan → Germany | #1 Study Abroad Consultancy
             </motion.div>
 
             {/* Headline */}
@@ -85,7 +85,7 @@ export function HeroSection({ darkMode }: HeroProps) {
                 color: darkMode ? "#fff" : "#111",
               }}
             >
-              Build Your{" "}
+              Study in{" "}
               <span
                 style={{
                   background: "linear-gradient(135deg, #C4A882, #A07850)",
@@ -93,10 +93,13 @@ export function HeroSection({ darkMode }: HeroProps) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Future Abroad
+                Germany
               </span>
+              {" "}from Pakistan
               <br />
-              with AbroadAoo
+              <span style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 600, color: darkMode ? "#C4A882" : "#8B6B4A" }}>
+                with AbroadAoo — Germany's Trusted Study Consultancy
+              </span>
             </motion.h1>
 
             {/* Subtext */}
@@ -112,7 +115,7 @@ export function HeroSection({ darkMode }: HeroProps) {
                 color: darkMode ? "#aaa" : "#666",
               }}
             >
-              Helping students from Pakistan study, train, and succeed in Germany. Your journey to a world-class education starts here.
+              Pakistan's leading consultancy for studying in Germany — expert guidance for Masters programs, Ausbildung vocational training, Germany student visa, IELTS preparation, and university admissions. Your Germany journey starts here.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -168,7 +171,7 @@ export function HeroSection({ darkMode }: HeroProps) {
             >
               <img
                 src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHN0dWR5aW5nJTIwYWJyb2FkJTIwdW5pdmVyc2l0eSUyMGNhbXB1c3xlbnwxfHx8fDE3NzMwODA1MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Students studying abroad"
+                alt="Pakistani students studying in Germany — AbroadAoo Germany study abroad consultancy"
                 className="w-full h-96 lg:h-[500px] object-cover"
               />
               <div

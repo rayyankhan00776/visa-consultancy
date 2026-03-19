@@ -11,7 +11,7 @@ const plans = [
     icon: Phone,
     emoji: "📞",
     title: "Voice Consultation",
-    description: "Private session to discuss study options, eligibility, and visa pathway.",
+    description: "Private session with a Germany study expert to discuss study options, eligibility & visa pathway for Pakistani students.",
     duration: "30 minutes",
     price: "$6",
     badge: null,
@@ -30,7 +30,7 @@ const plans = [
     icon: Video,
     emoji: "🎥",
     title: "Video Consultation",
-    description: "Personalized video session to plan your Germany study pathway.",
+    description: "Personalised video session to map your Pakistan to Germany study pathway — Masters, Ausbildung or Bachelor's route.",
     duration: "45 minutes",
     price: "$12",
     badge: "Most Popular",
@@ -73,7 +73,7 @@ export function ConsultationSection({ darkMode }: ConsultationSectionProps) {
               border: "1px solid rgba(196,168,130,0.3)",
             }}
           >
-            Book a Session
+            Book a Germany Study Abroad Consultation
           </span>
           <h2
             style={{
@@ -84,7 +84,7 @@ export function ConsultationSection({ darkMode }: ConsultationSectionProps) {
               lineHeight: 1.2,
             }}
           >
-            Choose Your Consultation
+            Germany Study Abroad Expert Consultation
           </h2>
           <p
             className="mt-4 max-w-lg mx-auto"
@@ -95,7 +95,7 @@ export function ConsultationSection({ darkMode }: ConsultationSectionProps) {
               lineHeight: 1.7,
             }}
           >
-            Get expert guidance tailored to your goals. Book your session today.
+            Get expert Germany study guidance tailored to your profile. Book your Pakistan→Germany consultation today.
           </p>
         </motion.div>
 

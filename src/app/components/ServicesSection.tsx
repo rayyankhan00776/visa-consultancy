@@ -893,7 +893,7 @@ export function ServicesSection({ darkMode }: ServicesSectionProps) {
               border: "1px solid rgba(196,168,130,0.3)",
             }}
           >
-            Our Programs
+            Germany Study Programs for Pakistani Students
           </span>
           <h2
             style={{
@@ -904,7 +904,7 @@ export function ServicesSection({ darkMode }: ServicesSectionProps) {
               lineHeight: 1.2,
             }}
           >
-            Programs We Offer
+            Germany Study Pathways — Masters, Ausbildung & Bachelor's
           </h2>
           <p
             className="mt-4 max-w-xl mx-auto"
@@ -915,7 +915,7 @@ export function ServicesSection({ darkMode }: ServicesSectionProps) {
               lineHeight: 1.7,
             }}
           >
-            Choose the study pathway that fits your background and goals. We guide you through every step.
+            Choose the Germany study pathway that fits your background and goals. We guide Pakistani students through Masters, Ausbildung, and Direct Bachelor's routes every step of the way.
           </p>
         </motion.div>
 
@@ -1024,7 +1024,7 @@ export function ServicesSection({ darkMode }: ServicesSectionProps) {
                 border: "1px solid rgba(196,168,130,0.3)",
               }}
             >
-              Scholarships
+              Scholarships in Germany for Pakistanis
             </span>
             <h3
               style={{
@@ -1035,7 +1035,7 @@ export function ServicesSection({ darkMode }: ServicesSectionProps) {
                 lineHeight: 1.2,
               }}
             >
-              Scholarship Opportunities for International Students
+              Scholarship Opportunities in Germany for Pakistani Students
             </h3>
             <p
               className="mt-4 max-w-3xl mx-auto"

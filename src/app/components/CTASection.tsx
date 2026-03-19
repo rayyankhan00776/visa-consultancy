@@ -58,7 +58,7 @@ export function CTASection({ darkMode }: CTASectionProps) {
               color: darkMode ? "#D4B896" : "#8B6B4A",
             }}
           >
-            🇩🇪 Pakistan → Germany
+            🇩🇪 Pakistan → Germany | Study Abroad Experts
           </div>
 
           <h2
@@ -85,7 +85,7 @@ export function CTASection({ darkMode }: CTASectionProps) {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Journey Today
+              Journey to Germany Today
             </span>
           </h2>
 
@@ -98,7 +98,7 @@ export function CTASection({ darkMode }: CTASectionProps) {
               lineHeight: 1.7,
             }}
           >
-            Join 500+ students who trusted AbroadAoo to navigate their path to Germany. Expert guidance, proven results.
+            Join 500+ Pakistani students who trusted AbroadAoo to navigate their study abroad journey to Germany. Expert Germany consultancy, proven results.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 relative z-10">
@@ -136,7 +136,7 @@ export function CTASection({ darkMode }: CTASectionProps) {
 
           {/* Trust indicators */}
           <div className="flex flex-wrap items-center justify-center gap-6 mt-10 relative z-10">
-            {["✅ 500+ Students Guided", "🎓 50+ Universities", "📞 Consultation Calls Available"].map((item) => (
+            {["✅ 500+ Pakistani Students Guided", "🎓 50+ German Universities", "🇩🇪 Germany Visa Success Rate 95%", "📞 Consultation Available Now"].map((item) => (
               <span
                 key={item}
                 style={{

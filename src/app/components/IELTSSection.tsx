@@ -47,7 +47,7 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
                 border: "1px solid rgba(196,168,130,0.3)",
               }}
             >
-              IELTS • PTE • TOEFL • IGCSE
+              IELTS Prep • PTE • TOEFL • IGCSE — For Germany Admission
             </span>
 
             <h2
@@ -60,9 +60,9 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
                 lineHeight: 1.2,
               }}
             >
-              IELTS • PTE • TOEFL • IGCSE
+              IELTS & English Test
               <br />
-              Preparation
+              Preparation in Pakistan
               <br />
               <span
                 style={{
@@ -71,7 +71,7 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Program
+                For Germany Admission
               </span>
             </h2>
 
@@ -96,12 +96,12 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
                     className="font-semibold"
                     style={{ fontFamily: "Sora, sans-serif", fontSize: "0.9rem", color: darkMode ? "#fff" : "#111" }}
                   >
-                    Expert Instructor
+                    Expert IELTS Instructor — Pakistan
                   </p>
                   <p
                     style={{ fontFamily: "Sora, sans-serif", fontSize: "0.78rem", color: "#C4A882" }}
                   >
-                    Band 8 Certified IELTS Trainer
+                    Band 8 Certified IELTS Trainer | Germany-Focused Preparation
                   </p>
                 </div>
               </div>
@@ -176,7 +176,7 @@ export function IELTSSection({ darkMode }: IELTSSectionProps) {
                 color: "#fff",
               }}
             >
-              Join IELTS Program
+              Join IELTS / PTE Prep — Germany Admission
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
           </motion.div>
