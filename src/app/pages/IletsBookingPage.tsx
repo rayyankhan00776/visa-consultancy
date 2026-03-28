@@ -318,7 +318,27 @@ export function IletsBookingPage({ darkMode }: IletsBookingPageProps) {
                     }}
                     aria-label="Video placeholder"
                   >
-                    <div className="aspect-video" />
+                    <div className="aspect-video flex items-center justify-center p-4">
+                      <div
+                        className="text-center"
+                        style={{
+                          fontFamily: "Sora, sans-serif",
+                        }}
+                      >
+                        <div
+                          className="inline-block px-3 py-1.5 rounded-full text-[0.72rem] font-semibold"
+                          style={{
+                            background: darkMode ? "rgba(212,184,150,0.14)" : "rgba(212,184,150,0.24)",
+                            border: "1px solid rgba(196,168,130,0.3)",
+                            color: darkMode ? "#E8DCCF" : "#8B6B4A",
+                            letterSpacing: "0.03em",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          Coming Soon
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

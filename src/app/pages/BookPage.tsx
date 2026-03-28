@@ -19,14 +19,14 @@ const options: Array<{
     id: "voice",
     title: "Voice Consultation",
     duration: "30 Minutes",
-    price: 6,
+    price: 0,
     Icon: Phone,
   },
   {
     id: "video",
     title: "Video Consultation",
     duration: "45 Minutes",
-    price: 12,
+    price: 10,
     Icon: Video,
   },
 ];
@@ -96,14 +96,25 @@ export function BookPage({ darkMode }: BookPageProps) {
     }
   };
 
+  const selectedOption = useMemo(
+    () => options.find((o) => o.id === selected) || options[0],
+    [selected]
+  );
+
   const instructionSteps = useMemo(
-    () => [
-      "Fill the form with the correct details — we will contact you within 24 hours.",
-      "Send the payment using the NayaPay account above.",
-      "Upload your payment screenshot in the form.",
-      "Click Done to complete your booking request.",
-    ],
-    []
+    () =>
+      selectedOption.price === 0
+        ? [
+            "Fill the form with the correct details — we will contact you within 24 hours.",
+            "Click Done to complete your booking request.",
+          ]
+        : [
+            "Fill the form with the correct details — we will contact you within 24 hours.",
+            "Send the payment using the NayaPay account above.",
+            "Upload your payment screenshot in the form.",
+            "Click Done to complete your booking request.",
+          ],
+    [selectedOption.price]
   );
 
   useEffect(() => {
@@ -113,11 +124,6 @@ export function BookPage({ darkMode }: BookPageProps) {
       setSelected(type);
     }
   }, []);
-
-  const selectedOption = useMemo(
-    () => options.find((o) => o.id === selected) || options[0],
-    [selected]
-  );
 
   const formDisabled = submitStatus.state === "submitting" || submitStatus.state === "success";
 
@@ -175,7 +181,8 @@ export function BookPage({ darkMode }: BookPageProps) {
       return;
     }
 
-    if (!uploadedImage) {
+    const requiresPayment = selectedOption.price > 0;
+    if (requiresPayment && !uploadedImage) {
       setSubmitStatus({ state: "error", message: "Please upload your payment screenshot." });
       formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
@@ -184,8 +191,11 @@ export function BookPage({ darkMode }: BookPageProps) {
     try {
       setSubmitStatus({ state: "submitting" });
 
-      const dataUrl = await fileToBase64(uploadedImage);
-      const base64 = dataUrl.includes(",") ? dataUrl.split(",")[1] : dataUrl;
+      let finalImageBase64 = "";
+      if (uploadedImage) {
+        const dataUrl = await fileToBase64(uploadedImage);
+        finalImageBase64 = dataUrl.includes(",") ? dataUrl.split(",")[1] : dataUrl;
+      }
 
       const payload = {
         consultationType: selected,
@@ -197,9 +207,9 @@ export function BookPage({ darkMode }: BookPageProps) {
         languageMedium,
         qualification,
         extraNote,
-        imageName: uploadedImage.name,
-        imageMimeType: uploadedImage.type || "image/png",
-        imageBase64: base64,
+        imageName: uploadedImage?.name || "",
+        imageMimeType: uploadedImage?.type || "image/png",
+        imageBase64: finalImageBase64,
       };
 
       // Google Apps Script Web Apps often trigger CORS/preflight issues when using application/json.
@@ -433,7 +443,7 @@ export function BookPage({ darkMode }: BookPageProps) {
                         color: darkMode ? "#E8DCCF" : "#8B6B4A",
                       }}
                     >
-                      ${opt.price}
+                      {opt.price === 0 ? "Free" : `$${opt.price}`}
                     </div>
                   </div>
                 </div>
@@ -742,70 +752,72 @@ export function BookPage({ darkMode }: BookPageProps) {
             </div>
           </div>
 
-          <div
-            className="mt-6 rounded-2xl p-5"
-            style={{
-              background: darkMode ? "rgba(255,255,255,0.04)" : "rgba(212,184,150,0.18)",
-              border: darkMode ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(196,168,130,0.2)",
-            }}
-          >
+          {selectedOption.price > 0 ? (
             <div
-              className="flex items-center gap-2"
+              className="mt-6 rounded-2xl p-5"
               style={{
-                fontFamily: "Sora, sans-serif",
-                fontSize: "0.85rem",
-                fontWeight: 800,
-                color: darkMode ? "#E8DCCF" : "#8B6B4A",
-                marginBottom: 10,
+                background: darkMode ? "rgba(255,255,255,0.04)" : "rgba(212,184,150,0.18)",
+                border: darkMode ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(196,168,130,0.2)",
               }}
             >
-              <ImageIcon className="w-4.5 h-4.5" style={{ color: darkMode ? "#D4B896" : "#8B6B4A" }} />
-              Upload Payment Screenshot
-            </div>
+              <div
+                className="flex items-center gap-2"
+                style={{
+                  fontFamily: "Sora, sans-serif",
+                  fontSize: "0.85rem",
+                  fontWeight: 800,
+                  color: darkMode ? "#E8DCCF" : "#8B6B4A",
+                  marginBottom: 10,
+                }}
+              >
+                <ImageIcon className="w-4.5 h-4.5" style={{ color: darkMode ? "#D4B896" : "#8B6B4A" }} />
+                Upload Payment Screenshot
+              </div>
 
-            <input
-              key={fileInputKey}
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              required
-              disabled={formDisabled}
-              onChange={(e) => {
-                setUploadedImage(e.target.files?.[0] || null);
-                if (submitStatus.state === "error") setSubmitStatus({ state: "idle" });
-              }}
-              className="block w-full text-sm"
-              style={{
-                fontFamily: "Sora, sans-serif",
-                color: darkMode ? "#bbb" : "#666",
-              }}
-            />
+              <input
+                key={fileInputKey}
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                required
+                disabled={formDisabled}
+                onChange={(e) => {
+                  setUploadedImage(e.target.files?.[0] || null);
+                  if (submitStatus.state === "error") setSubmitStatus({ state: "idle" });
+                }}
+                className="block w-full text-sm"
+                style={{
+                  fontFamily: "Sora, sans-serif",
+                  color: darkMode ? "#bbb" : "#666",
+                }}
+              />
 
-            {uploadedImage ? (
+              {uploadedImage ? (
+                <div
+                  className="mt-3"
+                  style={{
+                    fontFamily: "Sora, sans-serif",
+                    fontSize: "0.85rem",
+                    color: darkMode ? "#aaa" : "#777",
+                  }}
+                >
+                  Selected: <span style={{ fontWeight: 800, color: darkMode ? "#fff" : "#111" }}>{uploadedImage.name}</span>
+                </div>
+              ) : null}
+
               <div
                 className="mt-3"
                 style={{
                   fontFamily: "Sora, sans-serif",
-                  fontSize: "0.85rem",
-                  color: darkMode ? "#aaa" : "#777",
+                  fontSize: "0.82rem",
+                  color: darkMode ? "#888" : "#777",
+                  lineHeight: 1.6,
                 }}
               >
-                Selected: <span style={{ fontWeight: 800, color: darkMode ? "#fff" : "#111" }}>{uploadedImage.name}</span>
+                Please upload a clear screenshot so we can verify your payment quickly.
               </div>
-            ) : null}
-
-            <div
-              className="mt-3"
-              style={{
-                fontFamily: "Sora, sans-serif",
-                fontSize: "0.82rem",
-                color: darkMode ? "#888" : "#777",
-                lineHeight: 1.6,
-              }}
-            >
-              Please upload a clear screenshot so we can verify your payment quickly.
             </div>
-          </div>
+          ) : null}
         </form>
 
         {/* Summary + Payment */}
@@ -845,69 +857,48 @@ export function BookPage({ darkMode }: BookPageProps) {
                   Total Price
                 </span>
                 <span style={{ fontFamily: "Sora, sans-serif", fontSize: "1.1rem", fontWeight: 900, color: darkMode ? "#E8DCCF" : "#8B6B4A" }}>
-                  ${selectedOption.price}
+                  {selectedOption.price === 0 ? "Free" : `$${selectedOption.price}`}
                 </span>
               </div>
             </div>
 
-            <div
-              className="mt-6 rounded-2xl p-5"
-              style={{
-                background: darkMode ? "rgba(255,255,255,0.04)" : "rgba(212,184,150,0.18)",
-                border: darkMode ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(196,168,130,0.2)",
-              }}
-            >
+            {selectedOption.price > 0 ? (
               <div
+                className="mt-6 rounded-2xl p-5"
                 style={{
-                  fontFamily: "Sora, sans-serif",
-                  fontSize: "0.85rem",
-                  fontWeight: 800,
-                  color: darkMode ? "#E8DCCF" : "#8B6B4A",
-                  marginBottom: 10,
+                  background: darkMode ? "rgba(255,255,255,0.04)" : "rgba(212,184,150,0.18)",
+                  border: darkMode ? "1px solid rgba(255,255,255,0.06)" : "1px solid rgba(196,168,130,0.2)",
                 }}
               >
-                Payment Method
-              </div>
-              <div className="space-y-2" style={{ fontFamily: "Sora, sans-serif", fontSize: "0.9rem" }}>
-                <div className="flex items-center justify-between">
-                  <span style={{ color: darkMode ? "#aaa" : "#777" }}>Method</span>
-                  <span style={{ color: darkMode ? "#fff" : "#111", fontWeight: 700 }}>{paymentMethod}</span>
+                <div
+                  style={{
+                    fontFamily: "Sora, sans-serif",
+                    fontSize: "0.85rem",
+                    fontWeight: 800,
+                    color: darkMode ? "#E8DCCF" : "#8B6B4A",
+                    marginBottom: 10,
+                  }}
+                >
+                  Payment Method
                 </div>
-                <div className="flex items-center justify-between">
-                  <span style={{ color: darkMode ? "#aaa" : "#777" }}>Name</span>
-                  <span style={{ color: darkMode ? "#fff" : "#111", fontWeight: 700 }}>{paymentNameDisplay}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span style={{ color: darkMode ? "#aaa" : "#777" }}>Phone / Account</span>
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    title="Click to copy"
-                    aria-label="Copy phone or account number"
-                    onClick={() => void copyToClipboard(paymentAccount)}
-                    onKeyDown={(e) => handleCopyKeyDown(e, paymentAccount)}
-                    style={{
-                      color: darkMode ? "#fff" : "#111",
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(196,168,130,0.45)",
-                      textUnderlineOffset: "3px",
-                    }}
-                  >
-                    {paymentAccount}
-                  </span>
-                </div>
-                {paymentIban ? (
+                <div className="space-y-2" style={{ fontFamily: "Sora, sans-serif", fontSize: "0.9rem" }}>
                   <div className="flex items-center justify-between">
-                    <span style={{ color: darkMode ? "#aaa" : "#777" }}>IBAN</span>
+                    <span style={{ color: darkMode ? "#aaa" : "#777" }}>Method</span>
+                    <span style={{ color: darkMode ? "#fff" : "#111", fontWeight: 700 }}>{paymentMethod}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span style={{ color: darkMode ? "#aaa" : "#777" }}>Name</span>
+                    <span style={{ color: darkMode ? "#fff" : "#111", fontWeight: 700 }}>{paymentNameDisplay}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span style={{ color: darkMode ? "#aaa" : "#777" }}>Phone / Account</span>
                     <span
                       role="button"
                       tabIndex={0}
                       title="Click to copy"
-                      aria-label="Copy IBAN"
-                      onClick={() => void copyToClipboard(paymentIban)}
-                      onKeyDown={(e) => handleCopyKeyDown(e, paymentIban)}
+                      aria-label="Copy phone or account number"
+                      onClick={() => void copyToClipboard(paymentAccount)}
+                      onKeyDown={(e) => handleCopyKeyDown(e, paymentAccount)}
                       style={{
                         color: darkMode ? "#fff" : "#111",
                         fontWeight: 700,
@@ -917,12 +908,35 @@ export function BookPage({ darkMode }: BookPageProps) {
                         textUnderlineOffset: "3px",
                       }}
                     >
-                      {paymentIban}
+                      {paymentAccount}
                     </span>
                   </div>
-                ) : null}
+                  {paymentIban ? (
+                    <div className="flex items-center justify-between">
+                      <span style={{ color: darkMode ? "#aaa" : "#777" }}>IBAN</span>
+                      <span
+                        role="button"
+                        tabIndex={0}
+                        title="Click to copy"
+                        aria-label="Copy IBAN"
+                        onClick={() => void copyToClipboard(paymentIban)}
+                        onKeyDown={(e) => handleCopyKeyDown(e, paymentIban)}
+                        style={{
+                          color: darkMode ? "#fff" : "#111",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                          textDecorationColor: "rgba(196,168,130,0.45)",
+                          textUnderlineOffset: "3px",
+                        }}
+                      >
+                        {paymentIban}
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
 
           <div className="space-y-6">

@@ -13,7 +13,7 @@ const plans = [
     title: "Voice Consultation",
     description: "Private session with a Germany study expert to discuss study options, eligibility & visa pathway for Pakistani students.",
     duration: "30 minutes",
-    price: "$6",
+    price: "Free",
     badge: null,
     cta: "Book Voice Consultation",
     features: [
@@ -32,7 +32,7 @@ const plans = [
     title: "Video Consultation",
     description: "Personalised video session to map your Pakistan to Germany study pathway — Masters, Ausbildung or Bachelor's route.",
     duration: "45 minutes",
-    price: "$12",
+    price: "$10",
     badge: "Most Popular",
     cta: "Book Video Consultation",
     features: [
